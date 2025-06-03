@@ -1,7 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
-            message: ''
+            message: '',
+            theme: 'light'
         };
     },
     computed: {
@@ -11,6 +12,9 @@ const app = Vue.createApp({
         },
         htmlOutput() {
             return marked.parse(this.message);
+        },
+        themeIcon() {
+            return this.theme === 'dark' ? 'light_mode' : 'dark_mode';
         }
     },
     mounted() {
@@ -20,6 +24,14 @@ const app = Vue.createApp({
     watch: {
         message(newMessage) {
             localStorage.setItem('markdownText', newMessage);
+        },
+        theme(newTheme) {
+            document.documentElement.setAttribute('data-bs-theme', newTheme);
+        }
+    },
+    methods: {
+        toggleTheme() {
+            this.theme = this.theme === 'dark' ? 'light' : 'dark';
         }
     }
 });

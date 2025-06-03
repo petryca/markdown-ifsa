@@ -12,25 +12,13 @@
 </head>
 <body class="p-0 m-0">
 
-  <span id="themeToggle" class="material-icons">dark_mode</span>
-
   <div id="app" class="editor-container">
+    <span @click="toggleTheme" id="themeToggle" class="material-icons">{{ themeIcon }}</span>
     <textarea v-model="message" id="input" class="form-control h-100" placeholder="Type here..."></textarea>
     <div id="output" v-html="htmlOutput" class="h-100"></div>
     <div id="counter">{{ charCount }}</div>
   </div>
 
-  <script>
-    const toggle = document.getElementById("themeToggle");
-    const html = document.documentElement;
-    let isDark = false;
-
-    toggle.addEventListener("click", () => {
-      isDark = !isDark;
-      html.setAttribute("data-bs-theme", isDark ? "dark" : "light");
-      toggle.textContent = isDark ? "light_mode" : "dark_mode";
-    });
-  </script>
   <script src="app.js"></script>
 </body>
 </html>
