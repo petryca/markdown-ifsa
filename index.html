@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/15.0.7/marked.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="p-0 m-0">
 
@@ -15,7 +16,7 @@
 
   <div id="app" class="editor-container">
     <textarea v-model="message" id="input" class="form-control h-100" placeholder="Type here..."></textarea>
-    <div id="output" class="h-100">{{ message }}</div>
+    <div id="output" v-html="htmlOutput" class="h-100"></div>
     <div id="counter">{{ charCount }}</div>
   </div>
 
