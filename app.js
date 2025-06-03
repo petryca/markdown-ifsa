@@ -20,12 +20,17 @@ const app = Vue.createApp({
     mounted() {
         const saved = localStorage.getItem('markdownText');
         if (saved) this.message = saved;
+
+        const savedTheme = localStorage.getItem('theme');
+        this.theme = savedTheme || 'light';
+        document.documentElement.setAttribute('data-bs-theme', this.theme);
     },
     watch: {
         message(newMessage) {
             localStorage.setItem('markdownText', newMessage);
         },
         theme(newTheme) {
+            localStorage.setItem('theme', newTheme);
             document.documentElement.setAttribute('data-bs-theme', newTheme);
         }
     },
